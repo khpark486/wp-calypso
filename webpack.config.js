@@ -14,8 +14,6 @@ const cacheIdentifier = require( './server/bundler/babel/babel-loader-cache-iden
 const ChunkFileNamePlugin = require( './server/bundler/plugin' );
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 const HardSourceWebpackPlugin = require( 'hard-source-webpack-plugin' );
-const NamedChunksPlugin = require( 'bundler/webpack-plugins/NamedChunksPlugin' );
-const NamedModulesPlugin = require( 'bundler/webpack-plugins/NamedModulesPlugin' );
 const DashboardPlugin = require( 'webpack-dashboard/plugin' );
 
 /**
@@ -101,8 +99,8 @@ const webpackConfig = {
 		} ),
 		new webpack.IgnorePlugin( /^props$/ ),
 		new CopyWebpackPlugin( [ { from: 'node_modules/flag-icon-css/flags/4x3', to: 'images/flags' } ] ),
-		new NamedModulesPlugin(),
-		new NamedChunksPlugin(),
+		new webpack.NamedModulesPlugin(),
+		new webpack.NamedChunksPlugin(),
 	],
 	externals: [ 'electron' ]
 };
