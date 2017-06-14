@@ -12,10 +12,10 @@ import {
  * @param {Number} siteId The id of the site upon which to create the product.
  * @param {Object} product The complete product object (may include a placeholder id)
  * @param {String} [successAction=undefined] Optional action object to be dispatched upon success.
- * @param {String} [errorAction=undefined] Optional action object to be dispatched upon error.
+ * @param {String} [failureAction=undefined] Optional action object to be dispatched upon error.
  * @return {Object} Action object
  */
-export function createProduct( siteId, product, successAction = undefined, errorAction = undefined ) {
+export function createProduct( siteId, product, successAction = undefined, failureAction = undefined ) {
 	const action = {
 		type: WOOCOMMERCE_PRODUCT_CREATE,
 		siteId,
@@ -26,8 +26,8 @@ export function createProduct( siteId, product, successAction = undefined, error
 		action.successAction = successAction;
 	}
 
-	if ( errorAction ) {
-		action.errorAction = errorAction;
+	if ( failureAction ) {
+		action.failureAction = failureAction;
 	}
 
 	return action;
